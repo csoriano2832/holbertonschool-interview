@@ -58,7 +58,6 @@ heap_t *insertLeaf(heap_t *r, int value)
 	return (leaf);
 }
 
-
 /**
  * heap_insert - inserts a value into a Max Binary Heap
  * @root: double pointer to the root node of the Heap
