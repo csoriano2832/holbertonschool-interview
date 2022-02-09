@@ -14,10 +14,15 @@ int is_palindrome(unsigned long n)
 	sprintf(string, "%lu", n);
 	length = strlen(string);
 
-	for (index = 0; index < length / 2; index++)
+	if (length > 1)
 	{
-		if (string[index] != string[length - index - 1])
-			return (0);
+		if (length == 2)
+			return (string[0] == string[1]);
+				for (index = 0; index < length / 2; index++)
+				{
+					if (string[index] != string[length - index - 1])
+						return (0);
+				}
 	}
 
 	return (1);
