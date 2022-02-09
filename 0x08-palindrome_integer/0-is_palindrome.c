@@ -8,33 +8,50 @@
  */
 int is_palindrome(unsigned long n)
 {
-	char string[50];
-	int index, mid_left, mid_right, length = 0;
+	int tempNumber = num;
+	int dig, revNumber;
 
-	sprintf(string, "%lu", n);
-	length = strlen(string);
-	mid_left = length / 2 - 1;
-
-	if ((length % 2) == 0)
-		mid_right = mid_left + 1;
-	else
-		mid_right = mid_left + 2;
-
-	if (length > 1)
+	revNumber = 0;
+	while (num > 0)
 	{
-		if (length == 2)
-			return (string[0] == string[1]);
-
-		for (index = 0; index < length / 2; index++)
-		{
-			if (string[index] != string[length - index - 1] ||
-				string[mid_left] != string[mid_right])
-				return (0);
-
-			mid_left--;
-			mid_right++;
-		}
+		dig = num % 10;
+		revNumber = (revNumber * 10) + dig;
+		num /= 10;
 	}
 
-	return (1);
+	if (revNumber == tempNumber)
+		return (1);
+	else
+		return (0);
 }
+/*
+ * char string[50];
+   int index, mid_left, mid_right, length = 0;
+
+   sprintf(string, "%lu", n);
+   length = strlen(string);
+   mid_left = length / 2 - 1;
+
+   if ((length % 2) == 0)
+   mid_right = mid_left + 1;
+   else
+   mid_right = mid_left + 2;
+
+   if (length > 1)
+   {
+   if (length == 2)
+   return (string[0] == string[1]);
+
+   for (index = 0; index < length / 2; index++)
+   {
+   if (string[index] != string[length - index - 1] ||
+   string[mid_left] != string[mid_right])
+   return (0);
+
+   mid_left--;
+   mid_right++;
+   }*	}
+
+   return (1);
+   */
+
