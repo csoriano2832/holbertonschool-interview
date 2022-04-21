@@ -70,3 +70,4 @@ void swap(int *a, int *b, int *array, size_t n)
 	*b = temp;
 	print_array(array, n);
 }
+

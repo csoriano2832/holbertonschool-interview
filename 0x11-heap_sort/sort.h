@@ -10,3 +10,4 @@ void heap_root(int *arr, int n, int i, size_t size);
 void heap_sort(int *array, size_t size);
 
 #endif /* _SORT_H_ */
+
