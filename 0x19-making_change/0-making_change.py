@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """
-Task: Change comes from within
 Given a pile of coins of different values,
 determine the fewest number of coins needed to
 meet a given amount total
@@ -9,8 +8,6 @@ meet a given amount total
 
 def makeChange(coins, total):
     """
-    Given a pile of coins of different values, determine the fewest
-    number of coins needed to meet a given amount total.
     Return: fewest number of coins needed to meet total
         - If total is 0 or less, return 0
         - If total cannot be met by any number of coins you have, return -1
@@ -19,17 +16,19 @@ def makeChange(coins, total):
         - You can assume you have an infinite number of each denomination of
         coin in the list
     """
-    if total < 1:
+    if total <= 0:
         return 0
-    coins.sort()
-    coins.reverse()
-    fewest = 0
-    for coin in coins:
-        if total <= 0:
-            break
-        buff = total // coin
-        fewest += buff
-        total -= (buff * coin)
-    if total != 0:
-        return -1
-    return fewest
+
+    coins.sort(reverse=True)
+    sum = 0
+    i = 0
+    counter = 0
+    num_coins = len(coins)
+    while sum < total and i < num_coins:
+        while coins[i] <= total - sum:
+            sum += coins[i]
+            counter += 1
+            if sum == total:
+                return counter
+        i += 1
+    return -1
