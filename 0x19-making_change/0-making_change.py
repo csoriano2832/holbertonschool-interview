@@ -21,13 +21,15 @@ def makeChange(coins, total):
     """
     if total < 1:
         return 0
-    change = 0
-    coins.sort(reverse=True)
+    coins.sort()
+    coins.reverse()
+    fewest = 0
     for coin in coins:
-        temp_change = int(total / coin)
-        total -= (temp_change * coin)
-        change += temp_change
-        if total == 0:
-            return change
+        if total <= 0:
+            break
+        buff = total // coin
+        fewest += buff
+        total -= (buff * coin)
     if total != 0:
         return -1
+    return fewest
